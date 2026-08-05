@@ -1,0 +1,1444 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>机械设计助手</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="layout">
+    <!-- 侧边导航 -->
+    <aside class="sidebar" id="sidebar">
+      <div class="brand">
+        <div class="brand-logo">⚙</div>
+        <div>
+          <div class="brand-name">机械设计助手</div>
+          <div class="brand-sub">Mechanical Design Toolkit</div>
+        </div>
+      </div>
+      <nav class="nav" id="nav">
+        <input type="search" id="nav-search" class="input nav-search" placeholder="搜索模块…">
+        <button class="nav-item active" data-target="sec-home">总览</button>
+
+        <div class="nav-group">选型计算</div>
+        <button class="nav-item" data-target="sec-motor">电机选型</button>
+        <button class="nav-item" data-target="sec-reducer">减速机选型</button>
+        <button class="nav-item" data-target="sec-belt">同步带传动</button>
+        <button class="nav-item" data-target="sec-screw">滚珠丝杠</button>
+        <button class="nav-item" data-target="sec-cylinder">气缸选型</button>
+        <button class="nav-item" data-target="sec-guide">直线导轨</button>
+        <button class="nav-item" data-target="sec-bearing">滚动轴承</button>
+
+        <div class="nav-group">校核计算</div>
+        <button class="nav-item" data-target="sec-beam">梁的强度与挠度</button>
+        <button class="nav-item" data-target="sec-shaft">轴的设计</button>
+        <button class="nav-item" data-target="sec-gear">齿轮传动</button>
+        <button class="nav-item" data-target="sec-spring">螺旋弹簧</button>
+        <button class="nav-item" data-target="sec-bolt">螺栓预紧力与拧紧力矩</button>
+
+        <div class="nav-group">画图与建模</div>
+        <button class="nav-item" data-target="sec-model">螺纹尺寸</button>
+        <button class="nav-item" data-target="sec-chamfer">倒角与圆角</button>
+        <button class="nav-item" data-target="sec-draft">拔模斜度</button>
+        <button class="nav-item" data-target="sec-gdt">形位公差</button>
+        <button class="nav-item" data-target="sec-rough">表面粗糙度</button>
+        <button class="nav-item" data-target="sec-keyway">键槽尺寸</button>
+        <button class="nav-item" data-target="sec-oring">O 型圈沟槽</button>
+        <button class="nav-item" data-target="sec-bearingfit">轴承配合</button>
+        <button class="nav-item" data-target="sec-sheet">钣金折弯</button>
+        <button class="nav-item" data-target="sec-mold">注塑 / 铸造结构</button>
+        <button class="nav-item" data-target="sec-heat">热处理与硬度</button>
+        <button class="nav-item" data-target="sec-fit">公差配合查询</button>
+        <button class="nav-item" data-target="sec-materials">材料库</button>
+        <button class="nav-item" data-target="sec-units">单位换算</button>
+        <button class="nav-item" data-target="sec-checklist">设计检查表</button>
+      </nav>
+      <div class="sidebar-foot">离线可用 · 数据仅保存在本地</div>
+    </aside>
+
+    <!-- 主内容 -->
+    <main class="main">
+      <!-- 总览 -->
+      <section id="sec-home" class="panel active">
+        <div class="hero">
+          <h1>机械设计助手</h1>
+          <p>面向机械工程师的日常设计工具箱：选型计算、强度校核、SolidWorks 建模尺寸速查与公差配合查询，全部离线运行。</p>
+          <div class="hero-tags">
+            <span>✓ 选型计算</span>
+            <span>✓ 校核计算</span>
+            <span>✓ 画图与建模</span>
+            <span>✓ 离线可用</span>
+          </div>
+        </div>
+
+        <h2 class="grid-title">选型计算</h2>
+        <div class="grid">
+          <button class="card" data-goto="sec-motor">
+            <div class="card-icon">⏚</div>
+            <h3>电机选型</h3>
+            <p>负载扭矩 / 转速 → 功率，伺服惯量匹配检查</p>
+          </button>
+          <button class="card" data-goto="sec-reducer">
+            <div class="card-icon">◮</div>
+            <h3>减速机选型</h3>
+            <p>减速比、所需额定扭矩与服务系数校核</p>
+          </button>
+          <button class="card" data-goto="sec-belt">
+            <div class="card-icon">∞</div>
+            <h3>同步带传动</h3>
+            <p>带长、齿数、中心距与带速计算</p>
+          </button>
+          <button class="card" data-goto="sec-screw">
+            <div class="card-icon">⇅</div>
+            <h3>滚珠丝杠</h3>
+            <p>驱动扭矩、临界转速与压杆稳定校核</p>
+          </button>
+          <button class="card" data-goto="sec-cylinder">
+            <div class="card-icon">▮▯</div>
+            <h3>气缸选型</h3>
+            <p>缸径、实际推力、耗气量与活塞杆校核</p>
+          </button>
+          <button class="card" data-goto="sec-guide">
+            <div class="card-icon">▬</div>
+            <h3>直线导轨</h3>
+            <p>额定寿命（km / 小时）与静安全系数</p>
+          </button>
+          <button class="card" data-goto="sec-bearing">
+            <div class="card-icon">◯</div>
+            <h3>滚动轴承</h3>
+            <p>额定寿命 L10 与寿命小时数计算</p>
+          </button>
+        </div>
+
+        <h2 class="grid-title">校核计算</h2>
+        <div class="grid">
+          <button class="card" data-goto="sec-beam">
+            <div class="card-icon">〰</div>
+            <h3>梁计算</h3>
+            <p>简支 / 悬臂梁的最大弯矩、应力与挠度校核</p>
+          </button>
+          <button class="card" data-goto="sec-shaft">
+            <div class="card-icon">➰</div>
+            <h3>轴设计</h3>
+            <p>按扭矩或弯扭合成确定最小轴径，支持直径校核</p>
+          </button>
+          <button class="card" data-goto="sec-gear">
+            <div class="card-icon">⚙</div>
+            <h3>齿轮传动</h3>
+            <p>分度圆直径、中心距、传动比与转速计算</p>
+          </button>
+          <button class="card" data-goto="sec-spring">
+            <div class="card-icon">◉</div>
+            <h3>螺旋弹簧</h3>
+            <p>刚度、变形量、切应力与安全校核</p>
+          </button>
+          <button class="card" data-goto="sec-bolt">
+            <div class="card-icon">✥</div>
+            <h3>螺栓计算</h3>
+            <p>按性能等级计算预紧力与推荐拧紧力矩</p>
+          </button>
+        </div>
+
+        <h2 class="grid-title">画图与建模</h2>
+        <div class="grid">
+          <button class="card" data-goto="sec-model">
+            <div class="card-icon">◎</div>
+            <h3>螺纹尺寸</h3>
+            <p>螺纹底孔、通孔、沉孔、扳手与垫圈尺寸速查</p>
+          </button>
+          <button class="card" data-goto="sec-chamfer">
+            <div class="card-icon">⌗</div>
+            <h3>倒角与圆角</h3>
+            <p>倒角 / 圆角选用原则与推荐尺寸</p>
+          </button>
+          <button class="card" data-goto="sec-draft">
+            <div class="card-icon">⌂</div>
+            <h3>拔模斜度</h3>
+            <p>注塑 / 压铸 / 铸造拔模角推荐与偏移计算</p>
+          </button>
+          <button class="card" data-goto="sec-gdt">
+            <div class="card-icon">⫪</div>
+            <h3>形位公差</h3>
+            <p>ISO 2768 一般公差与直线度 / 平面度 / 垂直度参考</p>
+          </button>
+          <button class="card" data-goto="sec-rough">
+            <div class="card-icon">▤</div>
+            <h3>表面粗糙度</h3>
+            <p>Ra 与加工方式、使用场合对照</p>
+          </button>
+          <button class="card" data-goto="sec-keyway">
+            <div class="card-icon">⌁</div>
+            <h3>键槽尺寸</h3>
+            <p>按轴径查 GB/T 1095 平键槽宽与槽深</p>
+          </button>
+          <button class="card" data-goto="sec-oring">
+            <div class="card-icon">◍</div>
+            <h3>O 型圈沟槽</h3>
+            <p>按线径与压缩率计算密封沟槽尺寸</p>
+          </button>
+          <button class="card" data-goto="sec-bearingfit">
+            <div class="card-icon">◉</div>
+            <h3>轴承配合</h3>
+            <p>按工况推荐轴与壳体孔公差带</p>
+          </button>
+          <button class="card" data-goto="sec-sheet">
+            <div class="card-icon">⌐</div>
+            <h3>钣金折弯</h3>
+            <p>K 因子、折弯补偿 / 扣除与展开计算</p>
+          </button>
+          <button class="card" data-goto="sec-mold">
+            <div class="card-icon">▣</div>
+            <h3>注塑 / 铸造结构</h3>
+            <p>壁厚、加强筋与最小圆角推荐</p>
+          </button>
+          <button class="card" data-goto="sec-heat">
+            <div class="card-icon">◈</div>
+            <h3>热处理与硬度</h3>
+            <p>常用工艺硬度表与 HRC / HB 换算</p>
+          </button>
+          <button class="card" data-goto="sec-fit">
+            <div class="card-icon">±</div>
+            <h3>公差配合</h3>
+            <p>ISO 公差带查询，判断间隙 / 过渡 / 过盈配合</p>
+          </button>
+          <button class="card" data-goto="sec-materials">
+            <div class="card-icon">🔩</div>
+            <h3>材料库</h3>
+            <p>钢材、铝、铸铁、工程塑料的密度、弹性模量、强度参数速查</p>
+          </button>
+          <button class="card" data-goto="sec-units">
+            <div class="card-icon">⇄</div>
+            <h3>单位换算</h3>
+            <p>力、压力、扭矩、功率、长度、温度一键换算</p>
+          </button>
+          <button class="card" data-goto="sec-checklist">
+            <div class="card-icon">☑</div>
+            <h3>设计检查表</h3>
+            <p>从强度、工艺、装配到成本的设计评审清单</p>
+          </button>
+        </div>
+        <div class="note-box">
+          <h3>使用说明</h3>
+          <ul>
+            <li>所有计算采用国际单位制（mm / N / MPa），结果可放心用于初步设计与方案论证。</li>
+            <li>计算仅覆盖常规工况的简化模型；正式设计请按国家标准（GB/T）及实际工况取安全系数。</li>
+            <li>材料参数为典型值，具体牌号的供货状态差异请以材料标准或试验数据为准。</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 材料库 -->
+      <section id="sec-materials" class="panel">
+        <h2>材料库</h2>
+        <p class="muted">常用工程材料典型力学性能（室温，参考值）</p>
+        <div class="toolbar">
+          <input type="search" id="mat-search" class="input" placeholder="搜索材料名称 / 类别 / 用途…">
+          <select id="mat-cat" class="input select">
+            <option value="">全部类别</option>
+            <option value="碳钢">碳钢</option>
+            <option value="合金钢">合金钢</option>
+            <option value="不锈钢">不锈钢</option>
+            <option value="铝">铝及铝合金</option>
+            <option value="铸铁">铸铁</option>
+            <option value="铜">铜及铜合金</option>
+            <option value="塑料">工程塑料</option>
+          </select>
+        </div>
+        <div class="table-wrap">
+          <table class="table" id="mat-table">
+            <thead>
+              <tr>
+                <th>材料</th>
+                <th>类别</th>
+                <th>密度 g/cm³</th>
+                <th>E GPa</th>
+                <th>屈服 MPa</th>
+                <th>抗拉 MPa</th>
+                <th>典型用途</th>
+              </tr>
+            </thead>
+            <tbody id="mat-body"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- 单位换算 -->
+      <section id="sec-units" class="panel">
+        <h2>单位换算</h2>
+        <div class="card-form">
+          <div class="row">
+            <label class="field">
+              <span>类别</span>
+              <select id="unit-cat" class="input select"></select>
+            </label>
+          </div>
+          <div class="row">
+            <label class="field grow">
+              <span>数值</span>
+              <input type="number" id="unit-in" class="input" value="1" step="any">
+            </label>
+            <label class="field">
+              <span>从</span>
+              <select id="unit-from" class="input select"></select>
+            </label>
+            <label class="field">
+              <span>到</span>
+              <select id="unit-to" class="input select"></select>
+            </label>
+          </div>
+          <div class="result-line">
+            <span id="unit-out" class="big-value">—</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- 梁计算 -->
+      <section id="sec-beam" class="panel">
+        <h2>梁的强度与挠度</h2>
+        <p class="muted">适用于等截面直梁，材料线弹性范围</p>
+        <div class="card-form">
+          <div class="row">
+            <label class="field">
+              <span>支承与载荷</span>
+              <select id="beam-type" class="input select">
+                <option value="ss-point">简支梁 · 跨中集中力</option>
+                <option value="ss-udl">简支梁 · 均布载荷</option>
+                <option value="cant-point">悬臂梁 · 自由端集中力</option>
+                <option value="cant-udl">悬臂梁 · 均布载荷</option>
+              </select>
+            </label>
+          </div>
+          <div class="row">
+            <label class="field">
+              <span>跨度 L (mm)</span>
+              <input type="number" id="beam-L" class="input" value="1000" step="any" min="0">
+            </label>
+            <label class="field" id="beam-F-wrap">
+              <span>集中力 F (N)</span>
+              <input type="number" id="beam-F" class="input" value="5000" step="any" min="0">
+            </label>
+            <label class="field" id="beam-w-wrap" style="display:none">
+              <span>均布载荷 w (N/mm)</span>
+              <input type="number" id="beam-w" class="input" value="5" step="any" min="0">
+            </label>
+            <label class="field">
+              <span>弹性模量 E (GPa)</span>
+              <input type="number" id="beam-E" class="input" value="206" step="any" min="0">
+            </label>
+          </div>
+
+          <div class="row">
+            <label class="field">
+              <span>截面类型</span>
+              <select id="beam-sec" class="input select">
+                <option value="rect">矩形截面</option>
+                <option value="circle">实心圆截面</option>
+                <option value="hollow">空心圆截面</option>
+                <option value="ibeam">工字截面</option>
+              </select>
+            </label>
+            <label class="field" id="beam-rect-b-wrap">
+              <span>宽 b (mm)</span>
+              <input type="number" id="beam-rect-b" class="input" value="50" step="any" min="0">
+            </label>
+            <label class="field" id="beam-rect-h-wrap">
+              <span>高 h (mm)</span>
+              <input type="number" id="beam-rect-h" class="input" value="80" step="any" min="0">
+            </label>
+            <label class="field" id="beam-circle-d-wrap" style="display:none">
+              <span>直径 d (mm)</span>
+              <input type="number" id="beam-circle-d" class="input" value="60" step="any" min="0">
+            </label>
+            <label class="field" id="beam-hollow-D-wrap" style="display:none">
+              <span>外径 D (mm)</span>
+              <input type="number" id="beam-hollow-D" class="input" value="80" step="any" min="0">
+            </label>
+            <label class="field" id="beam-hollow-d-wrap" style="display:none">
+              <span>内径 d (mm)</span>
+              <input type="number" id="beam-hollow-d" class="input" value="60" step="any" min="0">
+            </label>
+            <label class="field" id="beam-i-b-wrap" style="display:none">
+              <span>翼缘宽 bf (mm)</span>
+              <input type="number" id="beam-i-b" class="input" value="100" step="any" min="0">
+            </label>
+            <label class="field" id="beam-i-h-wrap" style="display:none">
+              <span>总高 h (mm)</span>
+              <input type="number" id="beam-i-h" class="input" value="120" step="any" min="0">
+            </label>
+            <label class="field" id="beam-i-tw-wrap" style="display:none">
+              <span>腹板厚 tw (mm)</span>
+              <input type="number" id="beam-i-tw" class="input" value="6" step="any" min="0">
+            </label>
+            <label class="field" id="beam-i-tf-wrap" style="display:none">
+              <span>翼缘厚 tf (mm)</span>
+              <input type="number" id="beam-i-tf" class="input" value="10" step="any" min="0">
+            </label>
+            <label class="field">
+              <span>许用应力 σ (MPa，可选)</span>
+              <input type="number" id="beam-sig" class="input" placeholder="例如 160" step="any" min="0">
+            </label>
+          </div>
+          <div class="actions">
+            <button class="btn" id="beam-calc">计算</button>
+          </div>
+        </div>
+        <div class="results" id="beam-results">
+          <div class="result-grid">
+            <div class="result-item"><span>最大弯矩 M</span><b id="beam-M">—</b></div>
+            <div class="result-item"><span>惯性矩 I</span><b id="beam-I">—</b></div>
+            <div class="result-item"><span>抗弯截面系数 W</span><b id="beam-W">—</b></div>
+            <div class="result-item"><span>最大弯曲应力 σ</span><b id="beam-sigma">—</b></div>
+            <div class="result-item"><span>最大挠度 δ</span><b id="beam-delta">—</b></div>
+            <div class="result-item"><span>强度校核</span><b id="beam-status">—</b></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 轴设计 -->
+      <section id="sec-shaft" class="panel">
+        <h2>轴的设计</h2>
+        <div class="card-form">
+          <div class="row">
+            <label class="field">
+              <span>计算模式</span>
+              <select id="shaft-mode" class="input select">
+                <option value="torsion">仅传递扭矩（按许用切应力）</option>
+                <option value="combined">弯扭合成（按许用正应力）</option>
+              </select>
+            </label>
+          </div>
+          <div class="row">
+            <label class="field" id="shaft-P-wrap">
+              <span>传递功率 P (kW)</span>
+              <input type="number" id="shaft-P" class="input" value="10" step="any" min="0">
+            </label>
+            <label class="field" id="shaft-n-wrap">
+              <span>转速 n (rpm)</span>
+              <input type="number" id="shaft-n" class="input" value="1450" step="any" min="0">
+            </label>
+            <label class="field" id="shaft-T-wrap" style="display:none">
+              <span>扭矩 T (N·m)</span>
+              <input type="number" id="shaft-T" class="input" value="65" step="any" min="0">
+            </label>
+            <label class="field" id="shaft-M-wrap" style="display:none">
+              <span>弯矩 M (N·m)</span>
+              <input type="number" id="shaft-M" class="input" value="120" step="any" min="0">
+            </label>
+          </div>
+          <div class="row">
+            <label class="field" id="shaft-tau-wrap">
+              <span>许用切应力 τ (MPa)</span>
+              <input type="number" id="shaft-tau" class="input" value="35" step="any" min="0">
+            </label>
+            <label class="field" id="shaft-sigma-wrap" style="display:none">
+              <span>许用正应力 σ (MPa)</span>
+              <input type="number" id="shaft-sigma" class="input" value="70" step="any" min="0">
+            </label>
+            <label class="field">
+              <span>实际直径 d (mm，校核用，可选)</span>
+              <input type="number" id="shaft-d-actual" class="input" placeholder="例如 40" step="any" min="0">
+            </label>
+          </div>
+          <div class="actions">
+            <button class="btn" id="shaft-calc">计算</button>
+          </div>
+        </div>
+        <div class="results">
+          <div class="result-grid">
+            <div class="result-item"><span>扭矩 T</span><b id="shaft-Tout">—</b></div>
+            <div class="result-item"><span>计算最小轴径 d</span><b id="shaft-dmin">—</b></div>
+            <div class="result-item"><span>实际应力</span><b id="shaft-actual">—</b></div>
+            <div class="result-item"><span>校核结果</span><b id="shaft-status">—</b></div>
+          </div>
+        </div>
+        <div class="note-box">
+          <b>许用应力参考：</b>45 钢正火 τ≈30–40 MPa；40Cr 调质 τ≈40–52 MPa；轴上有键槽时建议按计算值放大 3%–7%（单键）或 7%–15%（双键）。
+        </div>
+      </section>
+
+      <!-- 齿轮 -->
+      <section id="sec-gear" class="panel">
+        <h2>齿轮传动（标准直齿圆柱齿轮）</h2>
+        <div class="card-form">
+          <div class="row">
+            <label class="field">
+              <span>模数 m (mm)</span>
+              <input type="number" id="gear-m" class="input" value="2" step="any" min="0">
+            </label>
+            <label class="field">
+              <span>小齿轮齿数 z₁</span>
+              <input type="number" id="gear-z1" class="input" value="20" step="1" min="1">
+            </label>
+            <label class="field">
+              <span>大齿轮齿数 z₂</span>
+              <input type="number" id="gear-z2" class="input" value="60" step="1" min="1">
+            </label>
+            <label class="field">
+              <span>输入转速 n₁ (rpm)</span>
+              <input type="number" id="gear-n1" class="input" value="1450" step="any" min="0">
+            </label>
+            <label class="field">
+              <span>输入扭矩 T₁ (N·m，可选)</span>
+              <input type="number" id="gear-T1" class="input" placeholder="例如 10" step="any" min="0">
+            </label>
+          </div>
+          <div class="actions">
+            <button class="btn" id="gear-calc">计算</button>
+          </div>
+        </div>
+        <div class="results">
+          <div class="result-grid">
+            <div class="result-item"><span>传动比 i</span><b id="gear-i">—</b></div>
+            <div class="result-item"><span>分度圆直径 d₁</span><b id="gear-d1">—</b></div>
+            <div class="result-item"><span>分度圆直径 d₂</span><b id="gear-d2">—</b></div>
+            <div class="result-item"><span>中心距 a</span><b id="gear-a">—</b></div>
+            <div class="result-item"><span>输出转速 n₂</span><b id="gear-n2">—</b></div>
+            <div class="result-item"><span>输出扭矩 T₂</span><b id="gear-T2">—</b></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 弹簧 -->
+      <section id="sec-spring" class="panel">
+        <h2>圆柱螺旋压缩弹簧</h2>
+        <div class="card-form">
+          <div class="row">
+            <label class="field">
+              <span>簧丝直径 d (mm)</span>
+              <input type="number" id="spr-d" class="input" value="3" step="any" min="0">
+            </label>
+            <label class="field">
+              <span>中径 D (mm)</span>
+              <input type="number" id="spr-D" class="input" value="24" step="any" min="0">
+            </label>
+            <label class="field">
+              <span>有效圈数 n</span>
+              <input type="number" id="spr-na" class="input" value="8" step="any" min="0">
+            </label>
+            <label class="field">
+              <span>切变模量 G (MPa)</span>
+              <input type="number" id="spr-G" class="input" value="79000" step="any" min="0">
+            </label>
+            <label class="field">
+              <span>工作载荷 F (N)</span>
+              <input type="number" id="spr-F" class="input" value="100" step="any" min="0">
+            </label>
+            <label class="field">
+              <span>许用切应力 τ (MPa，可选)</span>
+              <input type="number" id="spr-tau-allow" class="input" placeholder="例如 500" step="any" min="0">
+            </label>
+          </div>
+          <div class="actions">
+            <button class="btn" id="spr-calc">计算</button>
+          </div>
+        </div>
+        <div class="results">
+          <div class="result-grid">
+            <div class="result-item"><span>弹簧刚度 k</span><b id="spr-k">—</b></div>
+            <div class="result-item"><span>变形量 δ</span><b id="spr-delta">—</b></div>
+            <div class="result-item"><span>旋绕比 C</span><b id="spr-C">—</b></div>
+            <div class="result-item"><span>曲度系数 K</span><b id="spr-wahl">—</b></div>
+            <div class="result-item"><span>最大切应力 τ</span><b id="spr-tau">—</b></div>
+            <div class="result-item"><span>校核结果</span><b id="spr-status">—</b></div>
+            <div class="result-item"><span>压并高度（约）</span><b id="spr-solid">—</b></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 螺栓 -->
+      <section id="sec-bolt" class="panel">
+        <h2>螺栓预紧力与拧紧力矩</h2>
+        <div class="card-form">
+          <div class="row">
+            <label class="field">
+              <span>性能等级</span>
+              <select id="bolt-grade" class="input select">
+                <option value="4.8">4.8</option>
+                <option value="5.8">5.8</option>
+                <option value="8.8" selected>8.8</option>
+                <option value="10.9">10.9</option>
+                <option value="12.9">12.9</option>
+              </select>
+            </label>
+            <label class="field">
+              <span>公称直径（粗牙）</span>
+              <select id="bolt-d" class="input select"></select>
+            </label>
+            <label class="field">
+              <span>摩擦系数 K</span>
+              <select id="bolt-K" class="input select">
+                <option value="0.10">0.10（润滑良好）</option>
+                <option value="0.20" selected>0.20（一般）</option>
+                <option value="0.25">0.25（镀锌）</option>
+                <option value="0.30">0.30（干燥）</option>
+              </select>
+            </label>
+            <label class="field">
+              <span>预紧系数（取屈服比例）</span>
+              <input type="number" id="bolt-ratio" class="input" value="0.7" step="0.05" min="0.4" max="0.9">
+            </label>
+          </div>
+          <div class="actions">
+            <button class="btn" id="bolt-calc">计算</button>
+          </div>
+        </div>
+        <div class="results">
+          <div class="result-grid">
+            <div class="result-item"><span>应力截面积 As</span><b id="bolt-As">—</b></div>
+            <div class="result-item"><span>保证应力 σp</span><b id="bolt-proof">—</b></div>
+            <div class="result-item"><span>预紧力 F₀</span><b id="bolt-F">—</b></div>
+            <div class="result-item"><span>推荐拧紧力矩 T</span><b id="bolt-T">—</b></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 电机选型 -->
+      <section id="sec-motor" class="panel">
+        <h2>电机选型</h2>
+        <p class="muted">按连续工作工况估算所需功率；可额外检查伺服系统惯量匹配</p>
+        <div class="card-form">
+          <div class="row">
+            <label class="field">
+              <span>负载扭矩 T<sub>L</sub> (N·m)</span>
+              <input type="number" id="motor-TL" class="input" value="5" step="any" min="0">
+            </label>
+            <label class="field">
+              <span>工作转速 n (rpm)</span>
+              <input type="number" id="motor-n" class="input" value="300" step="any" min="0">
+            </label>
+            <label class="field">
+              <span>传动效率 η</span>
+              <input type="number" id="motor-eta" class="input" value="0.9" step="0.05" min="0.1" max="1">
+            </label>
+            <label class="field">
+              <span>安全系数（取 1.2–2）</span>
+              <input type="number" id="motor-SF" class="input" value="1.5" step="0.1" min="1">
+            </label>
+            <label class="field">
+              <span>负载折算惯量 J<sub>L</sub> (kg·m²，伺服检查)</span>
+              <input type="number" id="motor-JL" class="input" placeholder="例如 0.002" step="any" min="0">
+            </label>
+            <label class="field">
+              <span>电机转子惯量 J<sub>M</sub> (kg·m²)</span>
+              <input type="number" id="motor-JM" class="input" placeholder="例如 0.0005" step="any" min="0">
+            </label>
+          </div>
+          <div class="actions">
+            <button class="btn" id="motor-calc">计算</button>
+          </div>
+        </div>
+        <div class="results">
+          <div class="result-grid">
+            <div class="result-item"><span>所需功率 P</span><b id="motor-Preq">—</b></div>
+            <div class="result-item"><span>推荐额定功率（含安全系数）</span><b id="motor-Pstd">—</b></div>
+            <div class="result-item"><span>惯量比 J<sub>L</sub>/J<sub>M</sub></span><b id="motor-Jratio">—</b></div>
+            <div class="result-item"><span>惯量匹配</span><b id="motor-Jcheck">—</b></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 减速机选型 -->
+      <section id="sec-reducer" class="panel">
+        <h2>减速机选型</h2>
+        <div class="card-form">
+          <div class="row">
+            <label class="field">
+              <span>输入转速 n<sub>1</sub> (rpm)</span>
+              <input type="number" id="red-n1" class="input" value="1450" step="any" min="0">
+            </label>
+            <label class="field">
+              <span>输出转速 n<sub>2</sub> (rpm)</span>
+              <input type="number" id="red-n2" class="input" value="60" step="any" min="0">
+            </label>
+            <label class="field">
+              <span>所需输出扭矩 T<sub>2</sub> (N·m)</span>
+              <input type="number" id="red-T2" class="input" value="120" step="any" min="0">
+            </label>
+            <label class="field">
+              <span>服务系数 SF</span>
+              <select id="red-SF" class="input select">
+                <option value="1.25">1.25（平稳负载）</option>
+                <option value="1.5">1.5（轻微冲击）</option>
+                <option value="1.75" selected>1.75（中等冲击）</option>
+                <option value="2.0">2.0（重冲击）</option>
+              </select>
+            </label>
+            <label class="field">
+              <span>减速机效率 η</span>
+              <select id="red-eta" class="input select">
+                <option value="0.98">0.98（行星 / 斜齿轮）</option>
+                <option value="0.97" selected>0.97（伞齿轮）</option>
+                <option value="0.80">0.80（蜗轮蜗杆）</option>
+              </select>
+            </label>
+          </div>
+          <div class="actions">
+            <button class="btn" id="red-calc">计算</button>
+          </div>
+        </div>
+        <div class="results">
+          <div class="result-grid">
+            <div class="result-item"><span>减速比 i</span><b id="red-i">—</b></div>
+            <div class="result-item"><span>所需额定输出扭矩（×SF）</span><b id="red-Treq">—</b></div>
+            <div class="result-item"><span>所需输入功率</span><b id="red-Pin">—</b></div>
+          </div>
+        </div>
+        <div class="note-box">
+          选择减速机时额定输出扭矩应 ≥ 上表第三项数值，且按减速机厂家的许用径向 / 轴向载荷另行校核安装载荷。
+        </div>
+      </section>
+
+      <!-- 同步带 -->
+      <section id="sec-belt" class="panel">
+        <h2>同步带传动（几何计算）</h2>
+        <div class="card-form">
+          <div class="row">
+            <label class="field">
+              <span>带型节距 P (mm)</span>
+              <select id="belt-pitch" class="input select">
+                <option value="2">MXL · 2.032</option>
+                <option value="2.5">2.5</option>
+                <option value="3">3M · 3</option>
+                <option value="5" selected>5M / S5M · 5</option>
+                <option value="8">8M / S8M · 8</option>
+                <option value="9.525">XL · 9.525</option>
+                <option value="12.7">L · 12.7</option>
+                <option value="14">14M · 14</option>
+              </select>
+            </label>
+            <label class="field">
+              <span>主动轮齿数 z₁</span>
+              <input type="number" id="belt-z1" class="input" value="20" step="1" min="1">
+            </label>
+            <label class="field">
+              <span>从动轮齿数 z₂</span>
+              <input type="number" id="belt-z2" class="input" value="40" step="1" min="1">
+            </label>
+            <label class="field">
+              <span>中心距 C (mm)</span>
+              <input type="number" id="belt-C" class="input" value="300" step="any" min="0">
+            </label>
+            <label class="field">
+              <span>主动轮转速 n₁ (rpm)</span>
+              <input type="number" id="belt-n1" class="input" value="1450" step="any" min="0">
+            </label>
+            <label class="field">
+              <span>选用带长 L (mm，可选)</span>
+              <input type="number" id="belt-L" class="input" placeholder="例如 1120" step="any" min="0">
+            </label>
+          </div>
+          <div class="actions">
+            <button class="btn" id="belt-calc">计算</button>
+          </div>
+        </div>
+        <div class="results">
+          <div class="result-grid">
+            <div class="result-item"><span>传动比 i</span><b id="belt-ratio">—</b></div>
+            <div class="result-item"><span>节径 d₁</span><b id="belt-d1">—</b></div>
+            <div class="result-item"><span>节径 d₂</span><b id="belt-d2">—</b></div>
+            <div class="result-item"><span>计算带长 L</span><b id="belt-Lcalc">—</b></div>
+            <div class="result-item"><span>带齿数 z</span><b id="belt-zb">—</b></div>
+            <div class="result-item"><span>带速 v</span><b id="belt-v">—</b></div>
+            <div class="result-item"><span>选用带长对应中心距</span><b id="belt-Creal">—</b></div>
+          </div>
+        </div>
+        <div class="note-box">
+          此模块完成几何与速度计算；带宽、许用功率需按带型厂家样本（如齿剪切与张紧力）选择。
+        </div>
+      </section>
+
+      <!-- 滚珠丝杠 -->
+      <section id="sec-screw" class="panel">
+        <h2>滚珠丝杠校核</h2>
+        <div class="card-form">
+          <div class="row">
+            <label class="field">
+              <span>轴向载荷 F (N)</span>
+              <input type="number" id="screw-F" class="input" value="2000" step="any" min="0">
+            </label>
+            <label class="field">
+              <span>转速 n (rpm)</span>
+              <input type="number" id="screw-n" class="input" value="600" step="any" min="0">
+            </label>
+            <label class="field">
+              <span>导程 Ph (mm)</span>
+              <input type="number" id="screw-Ph" class="input" value="10" step="any" min="0">
+            </label>
+            <label class="field">
+              <span>丝杠根径 d<sub>r</sub> (mm)</span>
+              <input type="number" id="screw-dr" class="input" value="20" step="any" min="0">
+            </label>
+            <label class="field">
+              <span>支承跨距 L (mm)</span>
+              <input type="number" id="screw-L" class="input" value="1000" step="any" min="0">
+            </label>
+            <label class="field">
+              <span>支承方式</span>
+              <select id="screw-mount" class="input select">
+                <option value="fixed-fixed">固定-固定</option>
+                <option value="fixed-support" selected>固定-支承</option>
+                <option value="support-support">支承-支承</option>
+                <option value="fixed-free">固定-自由</option>
+              </select>
+            </label>
+            <label class="field">
+              <span>传动效率 η</span>
+              <input type="number" id="screw-eta" class="input" value="0.9" step="0.05" min="0.1" max="1">
+            </label>
+            <label class="field">
+              <span>压杆稳定安全系数</span>
+              <input type="number" id="screw-SF" class="input" value="2.5" step="0.5" min="1">
+            </label>
+          </div>
+          <div class="actions">
+            <button class="btn" id="screw-calc">计算</button>
+          </div>
+        </div>
+        <div class="results">
+          <div class="result-grid">
+            <div class="result-item"><span>驱动扭矩 T</span><b id="screw-T">—</b></div>
+            <div class="result-item"><span>所需电机功率</span><b id="screw-P">—</b></div>
+            <div class="result-item"><span>临界转速 n<sub>cr</sub></span><b id="screw-ncr">—</b></div>
+            <div class="result-item"><span>许用转速（0.8·n<sub>cr</sub>）</span><b id="screw-nmax">—</b></div>
+            <div class="result-item"><span>转速校核</span><b id="screw-status-n">—</b></div>
+            <div class="result-item"><span>临界轴向载荷 F<sub>cr</sub></span><b id="screw-Fcr">—</b></div>
+            <div class="result-item"><span>许用载荷 F<sub>cr</sub>/SF</span><b id="screw-Fallow">—</b></div>
+            <div class="result-item"><span>压杆校核</span><b id="screw-status-f">—</b></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 气缸 -->
+      <section id="sec-cylinder" class="panel">
+        <h2>气缸选型</h2>
+        <div class="card-form">
+          <div class="row">
+            <label class="field">
+              <span>负载力 F (N)</span>
+              <input type="number" id="cyl-F" class="input" value="500" step="any" min="0">
+            </label>
+            <label class="field">
+              <span>工作压力 P (MPa)</span>
+              <input type="number" id="cyl-P" class="input" value="0.6" step="0.05" min="0.01">
+            </label>
+            <label class="field">
+              <span>效率 η（考虑摩擦）</span>
+              <input type="number" id="cyl-eta" class="input" value="0.85" step="0.05" min="0.1" max="1">
+            </label>
+            <label class="field">
+              <span>行程 L (mm)</span>
+              <input type="number" id="cyl-L" class="input" value="100" step="any" min="0">
+            </label>
+            <label class="field">
+              <span>活塞杆径 d (mm，压杆校核用)</span>
+              <input type="number" id="cyl-d" class="input" placeholder="例如 12" step="any" min="0">
+            </label>
+            <label class="field">
+              <span>压杆安全系数</span>
+              <input type="number" id="cyl-SF" class="input" value="3" step="0.5" min="1">
+            </label>
+          </div>
+          <div class="actions">
+            <button class="btn" id="cyl-calc">计算</button>
+          </div>
+        </div>
+        <div class="results">
+          <div class="result-grid">
+            <div class="result-item"><span>理论缸径</span><b id="cyl-Dtheory">—</b></div>
+            <div class="result-item"><span>推荐标准缸径</span><b id="cyl-Dstd">—</b></div>
+            <div class="result-item"><span>标准缸径实际推力</span><b id="cyl-Fact">—</b></div>
+            <div class="result-item"><span>耗气量（推+拉往复一次）</span><b id="cyl-Q">—</b></div>
+            <div class="result-item"><span>活塞杆临界力</span><b id="cyl-Fcr">—</b></div>
+            <div class="result-item"><span>活塞杆校核</span><b id="cyl-status">—</b></div>
+          </div>
+        </div>
+        <div class="note-box">
+          实际选用时还需校核缓冲能力、侧向载荷与安装方式；活塞杆压杆按一端固定一端自由（μ=2）保守估算。
+        </div>
+      </section>
+
+      <!-- 直线导轨 -->
+      <section id="sec-guide" class="panel">
+        <h2>直线导轨寿命计算</h2>
+        <div class="card-form">
+          <div class="row">
+            <label class="field">
+              <span>额定动载荷 C (kN)</span>
+              <input type="number" id="guide-C" class="input" value="12" step="any" min="0">
+            </label>
+            <label class="field">
+              <span>额定静载荷 C₀ (kN)</span>
+              <input type="number" id="guide-C0" class="input" value="20" step="any" min="0">
+            </label>
+            <label class="field">
+              <span>等效载荷 P (kN)</span>
+              <input type="number" id="guide-P" class="input" value="3" step="any" min="0">
+            </label>
+            <label class="field">
+              <span>滚珠 / 滚柱</span>
+              <select id="guide-type" class="input select">
+                <option value="ball" selected>滚珠</option>
+                <option value="roller">滚柱</option>
+              </select>
+            </label>
+            <label class="field">
+              <span>运行速度 v (m/min)</span>
+              <input type="number" id="guide-v" class="input" value="20" step="any" min="0">
+            </label>
+            <label class="field">
+              <span>静安全系数</span>
+              <input type="number" id="guide-SF" class="input" value="2" step="0.5" min="1">
+            </label>
+          </div>
+          <div class="actions">
+            <button class="btn" id="guide-calc">计算</button>
+          </div>
+        </div>
+        <div class="results">
+          <div class="result-grid">
+            <div class="result-item"><span>额定寿命 L</span><b id="guide-life-km">—</b></div>
+            <div class="result-item"><span>寿命（连续运行小时）</span><b id="guide-life-h">—</b></div>
+            <div class="result-item"><span>静载荷校核</span><b id="guide-static">—</b></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 滚动轴承 -->
+      <section id="sec-bearing" class="panel">
+        <h2>滚动轴承寿命计算</h2>
+        <div class="card-form">
+          <div class="row">
+            <label class="field">
+              <span>基本额定动载荷 C (kN)</span>
+              <input type="number" id="bear-C" class="input" value="29.5" step="any" min="0">
+            </label>
+            <label class="field">
+              <span>当量动载荷 P (kN)</span>
+              <input type="number" id="bear-P" class="input" value="3" step="any" min="0">
+            </label>
+            <label class="field">
+              <span>转速 n (rpm)</span>
+              <input type="number" id="bear-n" class="input" value="1450" step="any" min="0">
+            </label>
+            <label class="field">
+              <span>轴承类型</span>
+              <select id="bear-type" class="input select">
+                <option value="ball" selected>球轴承</option>
+                <option value="roller">滚子轴承</option>
+              </select>
+            </label>
+          </div>
+          <div class="actions">
+            <button class="btn" id="bear-calc">计算</button>
+          </div>
+        </div>
+        <div class="results">
+          <div class="result-grid">
+            <div class="result-item"><span>基本额定寿命 L₁₀</span><b id="bear-L10">—</b></div>
+            <div class="result-item"><span>寿命 L₁₀ₕ</span><b id="bear-L10h">—</b></div>
+          </div>
+        </div>
+        <div class="note-box">
+          当量动载荷 P 需按实际径向 / 轴向载荷及 X、Y 系数合成；此处按纯径向等效载荷简化。
+        </div>
+      </section>
+
+      <!-- 螺纹尺寸 -->
+      <section id="sec-model" class="panel">
+        <h2>螺纹尺寸速查</h2>
+        <p class="muted">公制粗牙螺纹孔、通孔、沉孔与垫圈尺寸；依据 GB/T 5277、GB/T 152.2、GB/T 70.1、GB/T 70.3、ISO 273、ISO 10642、GB/T 97.1</p>
+        <div class="card-form">
+          <div class="row">
+            <label class="field">
+              <span>螺纹规格（粗牙）</span>
+              <select id="model-size" class="input select"></select>
+            </label>
+            <label class="field">
+              <span>零件材料（用于螺纹深度建议）</span>
+              <select id="model-mat" class="input select">
+                <option value="1.5" selected>钢 / 合金钢（有效螺纹 1.5d）</option>
+                <option value="1.5">铸铁（有效螺纹 1.5d）</option>
+                <option value="2">铝 / 铜（有效螺纹 2d）</option>
+              </select>
+            </label>
+          </div>
+          <div class="actions">
+            <button class="btn" id="model-calc">查询</button>
+          </div>
+        </div>
+        <div class="results">
+          <div class="result-grid">
+            <div class="result-item"><span>螺距 P</span><b id="model-P">—</b></div>
+            <div class="result-item"><span>攻丝底孔直径（D−P）</span><b id="model-tap">—</b></div>
+            <div class="result-item"><span>有效螺纹深度</span><b id="model-thread-depth">—</b></div>
+            <div class="result-item"><span>建议底孔总深（含攻丝余量 3P）</span><b id="model-hole-depth">—</b></div>
+            <div class="result-item"><span>通孔 精 / 中 / 粗</span><b id="model-clear">—</b></div>
+            <div class="result-item"><span>十字/开槽沉头孔（GB/T 152.2）</span><b id="model-csGB">—</b></div>
+            <div class="result-item"><span>内六角沉头孔（ISO 10642）</span><b id="model-csHex">—</b></div>
+            <div class="result-item"><span>内六角圆柱头沉孔（ISO 4762）</span><b id="model-cb">—</b></div>
+            <div class="result-item"><span>内六角对边 s</span><b id="model-hexS">—</b></div>
+            <div class="result-item"><span>外六角扳手对边</span><b id="model-wrench">—</b></div>
+            <div class="result-item"><span>平垫圈 GB/T 97.1</span><b id="model-washer">—</b></div>
+          </div>
+        </div>
+        <div class="note-box">
+          <ul>
+            <li>攻丝底孔按“公称直径 − 螺距”计算（钢、铸铁常用）；铝合金等软材料可略取大 0.1–0.2 mm，铸铁可略小。</li>
+            <li>盲孔螺纹：底孔总深 = 有效螺纹深度 + 3P（攻丝引导余量）。</li>
+            <li>建模时可直接使用 SolidWorks 孔向导的对应标准；本表用于手动建模与工程图标注对照，数值为常用标准值。</li>
+          </ul>
+        </div>
+        <h3>全规格速查表</h3>
+        <div class="table-wrap">
+          <table class="table" id="model-table">
+            <thead>
+              <tr>
+                <th>规格</th>
+                <th>螺距 P</th>
+                <th>攻丝底孔</th>
+                <th>通孔 精/中/粗</th>
+                <th>十字沉孔 d2×t</th>
+                <th>内六角沉孔 dk</th>
+                <th>圆柱头沉孔</th>
+                <th>内六角 s</th>
+                <th>外六角扳手</th>
+                <th>平垫圈 d1×d2×h</th>
+              </tr>
+            </thead>
+            <tbody id="model-body"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- 倒角与圆角 -->
+      <section id="sec-chamfer" class="panel">
+        <h2>倒角与圆角</h2>
+        <p class="muted">倒角用于去毛刺与装配导向，圆角用于降低应力集中；以下为常用经验值</p>
+        <div class="card-form">
+          <div class="row">
+            <label class="field">
+              <span>轴径 d (mm)</span>
+              <input type="number" id="chamfer-d" class="input" value="40" step="any" min="0">
+            </label>
+          </div>
+          <div class="actions">
+            <button class="btn" id="chamfer-calc">推荐轴肩圆角</button>
+          </div>
+        </div>
+        <div class="results">
+          <div class="result-grid">
+            <div class="result-item"><span>推荐轴肩圆角半径</span><b id="chamfer-r">—</b></div>
+          </div>
+        </div>
+        <div class="note-box">
+          <h3>选用原则</h3>
+          <ul>
+            <li><b>倒角 C</b>：去毛刺、方便装配与搬运，常用 C0.5 / C1 / C1.5 / C2 / C2.5 / C3 / C5（C1 即 45°×1 mm）。</li>
+            <li><b>圆角 R</b>：轴肩、受力零件根部等应力集中部位必须用圆角；轴肩圆角 r ≥ (0.05–0.1)d，取标准 R0.5–R10。</li>
+            <li>铸造 / 注塑件的内圆角应 ≥ 0.5 mm，外圆角一般 ≤ 3 mm，避免尖角应力集中与模具崩角。</li>
+            <li>应力集中系数 Kt 随 r/d 减小而增大：轴肩过渡处圆角取大值可显著提高疲劳强度。</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 拔模斜度 -->
+      <section id="sec-draft" class="panel">
+        <h2>拔模斜度</h2>
+        <p class="muted">注塑、压铸、铸造件的脱模斜度，建议方向指向脱模方向</p>
+        <div class="card-form">
+          <div class="row">
+            <label class="field">
+              <span>脱模方向深度 L (mm)</span>
+              <input type="number" id="draft-L" class="input" value="30" step="any" min="0">
+            </label>
+            <label class="field">
+              <span>单边拔模角 θ (°)</span>
+              <input type="number" id="draft-ang" class="input" value="1" step="0.1" min="0">
+            </label>
+          </div>
+          <div class="actions">
+            <button class="btn" id="draft-calc">计算偏移量</button>
+          </div>
+        </div>
+        <div class="results">
+          <div class="result-grid">
+            <div class="result-item"><span>单边偏移量</span><b id="draft-off">—</b></div>
+            <div class="result-item"><span>双边尺寸差</span><b id="draft-total">—</b></div>
+          </div>
+        </div>
+        <h3>推荐拔模角</h3>
+        <div class="table-wrap">
+          <table class="table">
+            <thead><tr><th>部位 / 工艺</th><th>推荐角度</th><th>说明</th></tr></thead>
+            <tbody id="draft-body"></tbody>
+          </table>
+        </div>
+        <div class="note-box">
+          型芯侧（内表面）拔模角通常比型腔侧（外表面）大；咬花面、深腔、难脱模部位取上限。
+        </div>
+      </section>
+
+      <!-- 形位公差 -->
+      <section id="sec-gdt" class="panel">
+        <h2>形位公差速查</h2>
+        <p class="muted">一般公差推荐按 ISO 2768-mK 标注（参考值，精密件按功能另定）</p>
+        <h3>线性尺寸一般公差（ISO 2768-m，mm）</h3>
+        <div class="table-wrap">
+          <table class="table">
+            <thead><tr><th>基本尺寸段</th><th>极限偏差</th></tr></thead>
+            <tbody id="gdt-linear-body"></tbody>
+          </table>
+        </div>
+        <h3>角度一般公差（ISO 2768-m）</h3>
+        <div class="table-wrap">
+          <table class="table">
+            <thead><tr><th>短边长度（mm）</th><th>极限偏差</th></tr></thead>
+            <tbody id="gdt-angle-body"></tbody>
+          </table>
+        </div>
+        <h3>直线度 / 平面度（ISO 2768-K，mm）</h3>
+        <div class="table-wrap">
+          <table class="table">
+            <thead><tr><th>基本长度（mm）</th><th>公差</th></tr></thead>
+            <tbody id="gdt-flat-body"></tbody>
+          </table>
+        </div>
+        <h3>垂直度（ISO 2768-K，mm）</h3>
+        <div class="table-wrap">
+          <table class="table">
+            <thead><tr><th>基本长度（mm）</th><th>公差</th></tr></thead>
+            <tbody id="gdt-perp-body"></tbody>
+          </table>
+        </div>
+        <div class="note-box">
+          需要更高精度时按功能指定形位公差（如配合面平面度 0.02、轴承座同轴度 0.02 等），并注明基准。
+        </div>
+      </section>
+
+      <!-- 表面粗糙度 -->
+      <section id="sec-rough" class="panel">
+        <h2>表面粗糙度速查</h2>
+        <h3>加工方式可达 Ra（μm）</h3>
+        <div class="table-wrap">
+          <table class="table">
+            <thead><tr><th>加工方式</th><th>可达 Ra</th></tr></thead>
+            <tbody id="rough-proc-body"></tbody>
+          </table>
+        </div>
+        <h3>按使用场合选择 Ra（μm）</h3>
+        <div class="table-wrap">
+          <table class="table">
+            <thead><tr><th>表面类型</th><th>推荐 Ra</th></tr></thead>
+            <tbody id="rough-app-body"></tbody>
+          </table>
+        </div>
+        <div class="note-box">
+          Ra 与 Rz 大致换算 Ra ≈ Rz / 4–5；表面粗糙度与公差等级应匹配：高精度配合面通常需要磨削或研磨。
+        </div>
+      </section>
+
+      <!-- 键槽 -->
+      <section id="sec-keyway" class="panel">
+        <h2>键槽尺寸查询（普通平键 GB/T 1095）</h2>
+        <div class="card-form">
+          <div class="row">
+            <label class="field">
+              <span>轴径 d (mm)</span>
+              <input type="number" id="keyway-d" class="input" value="40" step="any" min="6" max="500">
+            </label>
+          </div>
+          <div class="actions">
+            <button class="btn" id="keyway-calc">查询</button>
+          </div>
+        </div>
+        <div class="results">
+          <div class="result-grid">
+            <div class="result-item"><span>键宽 b × 键高 h</span><b id="keyway-bh">—</b></div>
+            <div class="result-item"><span>轴槽深 t / 毂槽深 t1</span><b id="keyway-t">—</b></div>
+            <div class="result-item"><span>槽底至表面尺寸</span><b id="keyway-dt">—</b></div>
+            <div class="result-item"><span>推荐键长</span><b id="keyway-L">—</b></div>
+          </div>
+        </div>
+        <h3>全规格表（轴径 → 键与槽深）</h3>
+        <div class="table-wrap">
+          <table class="table">
+            <thead><tr><th>轴径范围</th><th>b×h</th><th>轴槽深 t</th><th>毂槽深 t1</th></tr></thead>
+            <tbody id="keyway-body"></tbody>
+          </table>
+        </div>
+        <div class="note-box">
+          键槽宽公差（GB/T 1095）：松连接 H9 / 正常连接 N9 / 紧连接 P9（轴槽），毂槽相应为 D10 / Js9 / P9。
+        </div>
+      </section>
+
+      <!-- O 型圈 -->
+      <section id="sec-oring" class="panel">
+        <h2>O 型圈沟槽计算</h2>
+        <p class="muted">适用于一般静态密封（GB/T 3452.3 / ISO 3601 思路）</p>
+        <div class="card-form">
+          <div class="row">
+            <label class="field">
+              <span>O 型圈线径 d2 (mm)</span>
+              <input type="number" id="oring-d2" class="input" value="2.65" step="0.05" min="0">
+            </label>
+            <label class="field">
+              <span>压缩率 (%)</span>
+              <input type="number" id="oring-comp" class="input" value="20" step="1" min="5" max="35">
+            </label>
+          </div>
+          <div class="actions">
+            <button class="btn" id="oring-calc">计算</button>
+          </div>
+        </div>
+        <div class="results">
+          <div class="result-grid">
+            <div class="result-item"><span>推荐沟槽深度</span><b id="oring-h">—</b></div>
+            <div class="result-item"><span>推荐沟槽宽度</span><b id="oring-b">—</b></div>
+            <div class="result-item"><span>实际压缩量</span><b id="oring-comp-out">—</b></div>
+          </div>
+        </div>
+        <h3>常用线径沟槽参考</h3>
+        <div class="table-wrap">
+          <table class="table">
+            <thead><tr><th>线径 d2</th><th>槽深（15%）</th><th>槽深（20%）</th><th>槽宽</th></tr></thead>
+            <tbody id="oring-body"></tbody>
+          </table>
+        </div>
+        <div class="note-box">
+          静密封压缩率 15%–25%，动密封 10%–15%；槽底圆角 ≤ 0.5 mm，拐角处应倒圆；高压 / 真空工况请查标准与厂家样本。
+        </div>
+      </section>
+
+      <!-- 轴承配合 -->
+      <section id="sec-bearingfit" class="panel">
+        <h2>滚动轴承配合推荐</h2>
+        <div class="card-form">
+          <div class="row">
+            <label class="field grow">
+              <span>工况</span>
+              <select id="bearingfit-cond" class="input select"></select>
+            </label>
+          </div>
+          <div class="actions">
+            <button class="btn" id="bearingfit-calc">查询推荐配合</button>
+          </div>
+        </div>
+        <div class="results">
+          <div class="result-grid">
+            <div class="result-item"><span>轴公差带</span><b id="bearingfit-shaft">—</b></div>
+            <div class="result-item"><span>壳体孔公差带</span><b id="bearingfit-housing">—</b></div>
+            <div class="result-item"><span>适用工况</span><b id="bearingfit-cond-out">—</b></div>
+          </div>
+        </div>
+        <h3>对照表</h3>
+        <div class="table-wrap">
+          <table class="table">
+            <thead><tr><th>工况</th><th>轴</th><th>壳体孔</th></tr></thead>
+            <tbody id="bearingfit-body"></tbody>
+          </table>
+        </div>
+        <div class="note-box">
+          一般规律：内圈与轴取 0 或过盈（k6–p6），外圈与孔取 0 或间隙（H7–P7 视载荷方向）；精密、高速或薄壁壳体请查轴承样本。
+        </div>
+      </section>
+
+      <!-- 钣金折弯 -->
+      <section id="sec-sheet" class="panel">
+        <h2>钣金折弯展开计算</h2>
+        <div class="card-form">
+          <div class="row">
+            <label class="field">
+              <span>板厚 t (mm)</span>
+              <input type="number" id="sheet-t" class="input" value="1.5" step="0.1" min="0">
+            </label>
+            <label class="field">
+              <span>内弯曲半径 r (mm)</span>
+              <input type="number" id="sheet-r" class="input" value="1" step="0.1" min="0">
+            </label>
+            <label class="field">
+              <span>折弯角 θ (°)</span>
+              <input type="number" id="sheet-ang" class="input" value="90" step="1" min="1" max="179">
+            </label>
+            <label class="field">
+              <span>K 因子</span>
+              <select id="sheet-K" class="input select">
+                <option value="0.3">0.30（不锈钢偏硬）</option>
+                <option value="0.35">0.35</option>
+                <option value="0.4">0.40</option>
+                <option value="0.44" selected>0.44（软钢常用）</option>
+                <option value="0.5">0.50（SolidWorks 默认）</option>
+              </select>
+            </label>
+          </div>
+          <div class="actions">
+            <button class="btn" id="sheet-calc">计算</button>
+          </div>
+        </div>
+        <div class="results">
+          <div class="result-grid">
+            <div class="result-item"><span>折弯补偿 BA</span><b id="sheet-ba">—</b></div>
+            <div class="result-item"><span>折弯扣除 BD</span><b id="sheet-bd">—</b></div>
+            <div class="result-item"><span>K 因子</span><b id="sheet-k">—</b></div>
+            <div class="result-item"><span>最小折弯边</span><b id="sheet-min">—</b></div>
+            <div class="result-item"><span>孔到折弯边最小距离</span><b id="sheet-hole">—</b></div>
+          </div>
+        </div>
+        <h3>钣金设计规则（参考）</h3>
+        <div class="table-wrap">
+          <table class="table">
+            <thead><tr><th>规则</th><th>推荐值</th><th>说明</th></tr></thead>
+            <tbody id="sheet-body"></tbody>
+          </table>
+        </div>
+        <div class="note-box">
+          BA = θ(π/180)(r + K·t)，BD = 2(r+t)·tan(θ/2) − BA；展开长 = 两侧外尺寸之和 − BD。
+        </div>
+      </section>
+
+      <!-- 注塑 / 铸造结构 -->
+      <section id="sec-mold" class="panel">
+        <h2>注塑 / 铸造结构要素</h2>
+        <h3>推荐壁厚范围（mm）</h3>
+        <div class="table-wrap">
+          <table class="table">
+            <thead><tr><th>材料 / 工艺</th><th>壁厚</th><th>说明</th></tr></thead>
+            <tbody id="wall-body"></tbody>
+          </table>
+        </div>
+        <h3>加强筋与圆角</h3>
+        <div class="table-wrap">
+          <table class="table">
+            <thead><tr><th>要素</th><th>推荐值</th></tr></thead>
+            <tbody id="rib-body"></tbody>
+          </table>
+        </div>
+        <div class="note-box">
+          壁厚应尽量均匀，避免厚薄突变造成缩水、气孔或翘曲；加强筋沿受力方向布置，根部圆角避免应力集中。
+        </div>
+      </section>
+
+      <!-- 热处理与硬度 -->
+      <section id="sec-heat" class="panel">
+        <h2>热处理与硬度</h2>
+        <div class="card-form">
+          <div class="row">
+            <label class="field">
+              <span>换算方向</span>
+              <select id="heat-mode" class="input select">
+                <option value="hrc2hb" selected>HRC → HB</option>
+                <option value="hb2hrc">HB → HRC</option>
+              </select>
+            </label>
+            <label class="field">
+              <span>输入硬度值</span>
+              <input type="number" id="heat-in" class="input" value="40" step="any" min="0">
+            </label>
+          </div>
+          <div class="actions">
+            <button class="btn" id="heat-calc">换算</button>
+          </div>
+        </div>
+        <div class="results">
+          <div class="result-grid">
+            <div class="result-item"><span>换算结果</span><b id="heat-out">—</b></div>
+          </div>
+        </div>
+        <h3>常用材料热处理硬度（参考）</h3>
+        <div class="table-wrap">
+          <table class="table">
+            <thead><tr><th>材料</th><th>热处理</th><th>硬度</th></tr></thead>
+            <tbody id="heat-body"></tbody>
+          </table>
+        </div>
+        <div class="note-box">
+          HRC ↔ HB 为近似换算（参考 ASTM E140），适用于 15–70 HRC 范围；实际以硬度计实测为准。
+        </div>
+      </section>
+
+      <!-- 公差配合 -->
+      <section id="sec-fit" class="panel">
+        <h2>ISO 公差配合查询</h2>
+        <div class="card-form">
+          <div class="row">
+            <label class="field">
+              <span>基本尺寸 D (mm)</span>
+              <input type="number" id="fit-D" class="input" value="40" step="any" min="0.5" max="500">
+            </label>
+            <label class="field">
+              <span>孔公差带</span>
+              <select id="fit-hole" class="input select">
+                <option value="H6">H6</option>
+                <option value="H7" selected>H7</option>
+                <option value="H8">H8</option>
+                <option value="H9">H9</option>
+                <option value="H11">H11</option>
+              </select>
+            </label>
+            <label class="field">
+              <span>轴公差带</span>
+              <select id="fit-shaft" class="input select">
+                <option value="g6">g6</option>
+                <option value="h6" selected>h6</option>
+                <option value="f7">f7</option>
+                <option value="js6">js6</option>
+                <option value="k6">k6</option>
+                <option value="n6">n6</option>
+                <option value="p6">p6</option>
+                <option value="d9">d9</option>
+                <option value="c11">c11</option>
+              </select>
+            </label>
+          </div>
+          <div class="actions">
+            <button class="btn" id="fit-calc">查询</button>
+          </div>
+        </div>
+        <div class="results">
+          <div class="result-grid">
+            <div class="result-item"><span>尺寸分段</span><b id="fit-range">—</b></div>
+            <div class="result-item"><span>孔上偏差 ES</span><b id="fit-ES">—</b></div>
+            <div class="result-item"><span>孔下偏差 EI</span><b id="fit-EI">—</b></div>
+            <div class="result-item"><span>轴上偏差 es</span><b id="fit-es">—</b></div>
+            <div class="result-item"><span>轴下偏差 ei</span><b id="fit-ei">—</b></div>
+            <div class="result-item"><span>配合性质</span><b id="fit-type">—</b></div>
+            <div class="result-item"><span>最小间隙 / 过盈</span><b id="fit-min">—</b></div>
+            <div class="result-item"><span>最大间隙 / 过盈</span><b id="fit-max">—</b></div>
+          </div>
+        </div>
+        <div class="note-box">
+          <h3>常用配合速查</h3>
+          <ul>
+            <li><b>H7/g6</b> — 精密滑动配合（如机床导轨、分度机构）</li>
+            <li><b>H7/h6</b> — 定位配合，可装拆（如定位销）</li>
+            <li><b>H8/f7</b> — 一般滑动配合（如轴承座、滑动轴套）</li>
+            <li><b>H7/k6</b> — 过渡配合，定位精度高，可用木锤装配</li>
+            <li><b>H7/n6</b> — 过渡/小过盈，需压入，不可频繁拆装</li>
+            <li><b>H7/p6</b> — 过盈配合，需压装或热装（如齿轮轮毂）</li>
+            <li><b>H7/js6</b> — 过渡配合，用于需对称偏差的场合</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 检查表 -->
+      <section id="sec-checklist" class="panel">
+        <h2>设计检查表</h2>
+        <p class="muted">逐项勾选，帮助在出图前完成系统性评审。进度保存在本机浏览器中。</p>
+        <div class="progress-wrap">
+          <div class="progress-bar" id="chk-progress"><span id="chk-count">0 / 0</span></div>
+        </div>
+        <div class="chk-actions">
+          <button class="btn ghost" id="chk-clear">清空</button>
+        </div>
+        <div id="chk-container"></div>
+      </section>
+    </main>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/automation.js"></script>
+  <script src="js/model.js"></script>
+  <script src="js/design.js"></script>
+</body>
+</html>
