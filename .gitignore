@@ -1,0 +1,16 @@
+# 系统与编辑器
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+
+# 日志与临时文件
+*.log
+*.tmp
+work/
+tmp/
+
+# Node（本仓库无需依赖，保留以防后续扩展）
+node_modules/
+dist/
